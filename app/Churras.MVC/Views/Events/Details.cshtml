@@ -1,0 +1,98 @@
+﻿@model Churras.MVC.ViewModels.EventViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EventViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValueWithDrink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValueWithDrink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValueWithoutDrink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValueWithoutDrink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalParticipants)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalParticipants)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalWithDrinkParticipants)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalWithDrinkParticipants)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalWithoutDrinkParticipants)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalWithoutDrinkParticipants)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalCollection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalCollection)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalTargetCollection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalTargetCollection)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EventId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

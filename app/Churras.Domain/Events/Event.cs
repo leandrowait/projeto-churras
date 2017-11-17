@@ -34,7 +34,7 @@ namespace Churras.Domain.Events
         {
             get
             {
-                return this.CountParticipants(DrinkOption.WithDrink);
+                return this.CountParticipants(true);
             }
         }
 
@@ -42,7 +42,7 @@ namespace Churras.Domain.Events
         {
             get
             {
-                return this.CountParticipants(DrinkOption.WithoutDrink);
+                return this.CountParticipants(false);
             }
         }
 
@@ -67,12 +67,12 @@ namespace Churras.Domain.Events
             }
         }
 
-        private int CountParticipants(DrinkOption drinkOption)
+        private int CountParticipants(bool withDrink)
         {
             if (Participants == null) return 0;
 
             return Participants
-                .Where(x => x.DrinkOption == drinkOption)
+                .Where(x => x.WithDrink == withDrink)
                 .Count();
         }
     }

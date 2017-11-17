@@ -18,9 +18,12 @@ namespace Churras.Data.EntityConfig
             Property(x => x.Paid)
                 .IsOptional();
 
+            Property(x => x.Observation)
+                .IsOptional();
+
             HasRequired(c => c.Event)
                 .WithMany(p => p.Participants)
-                .Map(m => m.MapKey("EventId"));
+                .HasForeignKey(p => p.EventId);
         }
     }
 }

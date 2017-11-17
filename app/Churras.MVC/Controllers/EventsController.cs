@@ -12,16 +12,22 @@ namespace Churras.MVC.Controllers
 {
     public class EventsController : Controller
     {
-        private readonly IEventService eventAppService; 
+        private readonly IEventService eventAppService;
 
         public EventsController(IEventService eventService)
         {
             this.eventAppService = eventService;
         }
 
-        // GET: Events
         [HttpGet]
         public ActionResult Index()
+        {
+            return RedirectToAction("List");
+        }
+
+        // GET: Events
+        [HttpGet]
+        public ActionResult List()
         {
             var events = eventAppService.GetAll();
             var eventViewModel = Mapper.Map<IEnumerable<Event>, IEnumerable<EventViewModel>>(events);
@@ -34,7 +40,7 @@ namespace Churras.MVC.Controllers
         {
             var @event = eventAppService.GetBayId(id);
             var eventViewModel = Mapper.Map<Event, EventViewModel>(@event);
-            return View(eventViewModel); 
+            return View(eventViewModel);
         }
 
         // GET: Events/Create
@@ -55,7 +61,7 @@ namespace Churras.MVC.Controllers
                     var eventDomain = Mapper.Map<EventViewModel, Event>(@event);
                     eventAppService.Add(eventDomain);
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("List");
                 }
                 catch
                 {
@@ -86,7 +92,7 @@ namespace Churras.MVC.Controllers
                     var eventDomain = Mapper.Map<EventViewModel, Event>(@event);
                     eventAppService.Update(eventDomain);
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("List");
                 }
                 catch
                 {
@@ -98,6 +104,7 @@ namespace Churras.MVC.Controllers
         }
 
         // GET: Events/Delete/5
+        [HttpGet]
         public ActionResult Delete(int id)
         {
             var @event = eventAppService.GetBayId(id);
@@ -115,7 +122,7 @@ namespace Churras.MVC.Controllers
                 var @event = eventAppService.GetBayId(id);
                 eventAppService.Remove(@event);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
             catch
             {

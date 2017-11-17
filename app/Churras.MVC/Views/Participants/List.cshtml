@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Churras.MVC.ViewModels.ParticipantViewModel>
+
+@{
+    ViewBag.Title = "Participantes";
+}
+
+<h2>Participantes</h2>
+
+<p>
+    @Html.ActionLink("Novo", "Create", "Participants", new { id = ViewBag.EventId }, null)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contribuition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WithDrink)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Paid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observation)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contribuition)
+        </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.WithDrink)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.Paid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observation)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", "Participants", new { id=item.ParticipantId }, null) |
+           @* @Html.ActionLink("Detalhes", "Details", "Participants", new { id=item.ParticipantId }, null) |*@
+            @Html.ActionLink("Excluir", "Delete", "Participants", new { id=item.ParticipantId }, null)
+        </td>
+    </tr>
+}
+
+</table>
+<p>
+    @Html.ActionLink("Voltar", "List", "Events", new { id = ViewBag.EventId }, null)
+</p>
+

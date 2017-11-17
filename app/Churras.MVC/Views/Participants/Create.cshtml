@@ -1,0 +1,94 @@
+﻿@model Churras.MVC.ViewModels.ParticipantViewModel
+
+@{
+    ViewBag.Title = "Novo";
+}
+
+<h2>Novo</h2>
+
+
+@using (Html.BeginForm(new { EventId = ViewBag.EventId }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Participante</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Paid, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Paid)
+                    @Html.ValidationMessageFor(model => model.Paid, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Contribuition, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Contribuition, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Contribuition, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Observation, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Observation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Observation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WithDrink, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.WithDrink)
+                    @Html.ValidationMessageFor(model => model.WithDrink, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar", "List", new { id = ViewBag.EventId })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#WithDrink').change(function () {
+                if($(this).is(':checked')){
+                    $('#Contribuition').attr('placeholder', '@ViewBag.ValueWithDrinkSugestion');
+                }
+                else {
+                    $('#Contribuition').attr('placeholder', '@ViewBag.ValueWithoutDrinkSugestion');
+                }
+            });
+
+            if ($('#WithDrink').is(':checked')) {
+                $('#Contribuition').attr('placeholder', '@ViewBag.ValueWithDrinkSugestion');
+            }
+            else {
+                $('#Contribuition').attr('placeholder', '@ViewBag.ValueWithoutDrinkSugestion');
+            }
+        })
+    </script>
+}

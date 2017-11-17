@@ -10,6 +10,7 @@ namespace Churras.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(Churras.Data.Context.ChurrasContext context)

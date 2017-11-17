@@ -23,7 +23,8 @@ namespace Churras.Data.EntityConfig
 
             HasRequired(c => c.Event)
                 .WithMany(p => p.Participants)
-                .HasForeignKey(p => p.EventId);
+                .HasForeignKey(p => p.EventId)
+                .WillCascadeOnDelete(true);
         }
     }
 }

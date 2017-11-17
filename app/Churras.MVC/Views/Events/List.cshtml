@@ -42,13 +42,14 @@
             @Html.DisplayFor(modelItem => item.TotalCollection) 
         </td>
         <td>
+            @Html.ActionLink("Participantes", "List", "Participants", new { id = item.EventId }, null)
+        </td>
+        <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.EventId }) |
             @Html.ActionLink("Detalhes", "Details", new { id=item.EventId }) |
             @Html.ActionLink("Excluir", "Delete", new { id=item.EventId })
         </td>
-        <td>
-            @Html.ActionLink("Participantes", "List", "Participants", new { id = item.EventId }, null) 
-        </td>
+
     </tr>
 }
 
